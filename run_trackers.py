@@ -54,23 +54,36 @@ def main(argv):
             if len(results) > 0:
                 evalResults, attrList = butil.calc_result(tracker,
                     seqs, results, evalType)
-                print "Result of Sequences\t -- '{0}'".format(tracker)
+                all_err = []
                 for seq in seqs:
-                    try:
-                        print '\t\'{0}\'{1}'.format(
-                            seq.name, " "*(12 - len(seq.name))),
-                        print "\taveCoverage : {0:.3f}%".format(
-                            sum(seq.aveCoverage)/len(seq.aveCoverage) * 100),
-                        print "\taveErrCenter : {0:.3f}".format(
-                            sum(seq.aveErrCenter)/len(seq.aveErrCenter))
-                    except:
-                        print '\t\'{0}\'  ERROR!!'.format(seq.name)
+                    n_success_frm = 0
+                    n_fail_frm = 0
+                    for ec in seq.errCenter:
+                        if ec < 20.0:
+                            n_success_frm += 1
+                        else:
+                            n_fail_frm += 1
+                    err = n_success_frm/float(n_success_frm+n_fail_frm)
+                    all_err.append(err)
 
-                print "Result of attributes\t -- '{0}'".format(tracker)
+                print("Result of Sequences\t -- '{0}'".format(tracker))
+                for i_seq, seq in enumerate(seqs):
+                    try:
+                        print('\t\'{0}\'{1}'.format(seq.name, " "*(12 - len(seq.name))) 
+                            + "\taveCoverage : {0:.3f}".format(sum(seq.aveCoverage)/len(seq.aveCoverage)) 
+                            + "\taveErrCenter : {0:.3f}".format(sum(seq.aveErrCenter)/len(seq.aveErrCenter))
+                            + "\tprec@20 : {0:.3f}".format(all_err[i_seq]))
+                    except:
+                        logging.error('\t\'{0}\'  ERROR!!'.format(seq.name))
+
+                avg_err = sum(all_err) / len(all_err)
+                print('Precision plot score for ALL: {}'.format(round(avg_err,3)))
+                print("Result of attributes\t -- '{0}'".format(tracker))
                 for attr in attrList:
-                    print "\t\'{0}\'".format(attr.name),
-                    print "\toverlap : {0:02.1f}%".format(attr.overlap),
-                    print "\tfailures : {0:.1f}".format(attr.error)
+                    print("\t\'{0}\'".format(attr.name)
+                        + "\toverlap : {0:02.1f}%".format(attr.overlap)
+                        + "\tfailures : {0:.1f}".format(attr.error)
+                        + "\tAUC : {0:.3f}".format(sum(attr.successRateList) / len(attr.successRateList)))
 
                 if SAVE_RESULT : 
                     butil.save_scores(attrList, testname)
