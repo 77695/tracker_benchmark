@@ -4,12 +4,13 @@ This repository is modified from https://github.com/jwlim/tracker_benchmark.
 
 Goals:
 - [x] **Light Weight**. Extra trackers and results are removed in this repository
+- [x] **Dynamic Import**. Add only one file for a new tracker. Do not need to import in ```__init__.py```
+- [x] **Show More**. Show more results. (e.g.: AUC, Precision)
 - [ ] **No Bug**. Bugs are fixed.
 - [ ] **Compatible**. Easy to use in python2 and python3
 
 ## Run new tracker
-- Add script to running tracker in ```scripts/bscripts``` (see run_ExampleTracker.py)
-- Import it in ```scripts/bscripts/__init__.py```
+- Add script to running tracker in ```scripts/bscripts``` (see ExampleTracker.py)
 
 ## Usage
 Default (for all trackers, all sequences, all evaltypes(OPE, SRE, TRE))
