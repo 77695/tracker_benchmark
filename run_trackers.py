@@ -4,9 +4,10 @@ import numpy as np
 from PIL import Image
 from config import *
 from scripts import *
-
+import os
 def main(argv):
-    
+    if not os.path.exists(TRACKER_SRC):
+        os.makedirs(TRACKER_SRC)
     trackers = os.listdir(TRACKER_SRC)
     evalTypes = ['OPE', 'SRE', 'TRE']
     loadSeqs = 'TB50'
