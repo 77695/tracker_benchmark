@@ -41,7 +41,7 @@ def main(argv):
     if SETUP_SEQ:
         print 'Setup sequences ...'
         butil.setup_seqs(loadSeqs)
-    testname = raw_input("Input Test name : ")
+    testname = '-'.join(trackers) + '-' + '-'.join(loadSeqs) + '-' + '-'.join(evalTypes)
     print 'Starting benchmark for {0} trackers, evalTypes : {1}'.format(
         len(trackers), evalTypes)
     for evalType in evalTypes:
