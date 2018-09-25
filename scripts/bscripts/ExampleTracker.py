@@ -3,7 +3,7 @@ import os
 import numpy as np
 from config import *
 
-def run_ExampleTracker(seq, rp, bSaveImage):
+def run(seq, rp, bSaveImage):
     x = seq.init_rect[0] - 1
     y = seq.init_rect[1] - 1
     w = seq.init_rect[2]

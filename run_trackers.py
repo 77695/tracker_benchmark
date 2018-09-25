@@ -114,7 +114,7 @@ def run_trackers(trackers, seqs, evalType, shiftTypeSet):
                 subS.name = s.name + '_' + str(idx)
                     
                 os.chdir(TRACKER_SRC + t)
-                funcName = 'run_{0}(subS, rp, SAVE_IMAGE)'.format(t)
+                funcName = '{0}.run(subS, rp, SAVE_IMAGE)'.format(t)
                 try:
                     res = eval(funcName)
                 except:
