@@ -1,4 +1,4 @@
-# Trakcer Benchmark
+# Tracker Benchmark
 
 This repository is modified from https://github.com/jwlim/tracker_benchmark. 
 
