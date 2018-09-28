@@ -5,6 +5,8 @@ import scripts.butil
 def calc_seq_err_robust(results, rect_anno):
     seq_length = len(results.res)
     res = results.res
+    print('SEQ_LEN:{} - RES_LEN:{}'.format(seq_length, len(res)))
+    assert seq_length == len(res)
     centerGT = [[r[0]+(r[2]-1)/2.0, r[1]+(r[3]-1)/2.0] for r in rect_anno]
     
     rectMat = [[0, 0, 0, 0]] * seq_length
