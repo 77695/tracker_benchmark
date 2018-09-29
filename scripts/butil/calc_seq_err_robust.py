@@ -79,8 +79,8 @@ def calc_rect_int(A, B):
     rightA = [leftA[i] + A[i][2] - 1 for i in range(len(A))]
     topA = [bottomA[i] + A[i][3] - 1 for i in range(len(A))]
 
-    leftB = [b[0] for b in B]
-    bottomB = [b[1] for b in B]
+    leftB = [b[0] + 1 for b in B]
+    bottomB = [b[1] + 1 for b in B]
     rightB = [leftB[i] + B[i][2] - 1 for i in range(len(B))]
     topB = [bottomB[i] + B[i][3] - 1 for i in range(len(B))]
 
