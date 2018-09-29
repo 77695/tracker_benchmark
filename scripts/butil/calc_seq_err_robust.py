@@ -70,7 +70,7 @@ def calc_seq_err_robust(results, rect_anno):
 
     aveErrCoverage = totalerrCoverage / float(sum(idx))
     aveErrCenter = totalerrCenter / float(sum(idx))
-    print('errCoverage = {}'.format(errCoverage))
+    print('errCoverage = {} ... {}'.format(errCoverage[0:5], len(errCoverage)))
     return aveErrCoverage, aveErrCenter, errCoverage, errCenter
 
 def calc_rect_int(A, B):
