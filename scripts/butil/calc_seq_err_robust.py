@@ -7,7 +7,7 @@ def calc_seq_err_robust(results, rect_anno):
     res = results.res
     print('ANNO_LEN:{} - RES_LEN:{}'.format(len(rect_anno), len(res)))
     assert len(rect_anno) == len(res)
-    res = [[x[0]+1, x[1]+1, x[2], x[3]] for x in res]
+    
     print(rect_anno[0], res[0])
     centerGT = [[r[0]+(r[2]-1)/2.0, r[1]+(r[3]-1)/2.0] for r in rect_anno]
     
