@@ -1,6 +1,6 @@
 import math
 
-from ..config import *
+from config import *
 from .seq_config import *
 from .eval_results import *
 from .load_results import *
