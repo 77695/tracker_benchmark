@@ -12,7 +12,7 @@ def split_seq_TRE(seq, segNum, rect_anno):
         if not isinstance(idxExclude[0], np.ndarray):
             idxExclude = [idxExclude]
 
-    idx = range(1, seq.len + 1)
+    idx = list(range(1, seq.len + 1))
 
     for j in range(len(idxExclude)):
         begin = idxExclude[j][0] - 1
