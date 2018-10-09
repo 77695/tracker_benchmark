@@ -1,7 +1,7 @@
 import time
 import os
 import numpy as np
-from ..config import *
+from config import *
 
 def run(seq, rp, bSaveImage):
     x = seq.init_rect[0] - 1
