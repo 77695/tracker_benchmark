@@ -1,3 +1,3 @@
-from model import *
-from bscripts import *
-import butil
+from script.model import *
+from script.bscripts import *
+import script.butil
