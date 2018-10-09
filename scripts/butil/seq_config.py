@@ -84,29 +84,18 @@ def load_seq_configs(seqNames):
     return [load_seq_config(x) for x in seqNames]
 
 def get_seq_names(loadSeqs):
-    if type(loadSeqs) is list:
-        return loadSeqs
-    if loadSeqs.lower() == 'all':
-        names =  os.listdir(SEQ_SRC)
-        names.remove(ATTR_LIST_FILE)
-        names.remove(ATTR_DESC_FILE)
-        names.remove(TB_50_FILE)
-        names.remove(TB_100_FILE)
-    elif loadSeqs.lower() == 'tb50':
-        tb_50 = open(SEQ_SRC+TB_50_FILE)
-        seq_list = tb_50.readlines()
-        names = sorted([x.split('\t')[0].strip() for x in seq_list])
-    elif loadSeqs.lower() == 'tb100':
-        tb_100 = open(SEQ_SRC+TB_100_FILE)
-        seq_list = tb_100.readlines()
-        names = sorted([x.split('\t')[0].strip() for x in seq_list])
-    elif loadSeqs.lower() == 'cvpr13':
-        cvpr13 = open(SEQ_SRC+CVPR_13_FILE)
-        seq_list = cvpr13.readlines()
-        names = sorted([x.split('\t')[0].strip() for x in seq_list])
-    else:
-        names = loadSeqs
-    return names
+    if len(loadSeqs) == 1:
+        fn_seqs = SEQ_SRC+loadSeqs[0]+'.txt'
+        if os.path.exists(fn_seqs):
+            with open(fn_seqs) as fs:
+                seq_list = fs.readlines()
+                loadSeqs = sorted([x.split('\t')[0].strip() for x in seq_list])
+        elif loadSeqs[0].lower() == 'all':
+            loadSeqs =  os.listdir(SEQ_SRC)
+            for fn in loadSeqs:
+                if fn.find('.txt') != -1:
+                    loadSeqs.remove(fn)
+    return loadSeqs
 
 def make_seq_configs(loadSeqs):
     names = get_seq_names(loadSeqs)

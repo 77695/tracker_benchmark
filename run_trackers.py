@@ -29,11 +29,7 @@ def main(argv):
             trackers = [x.strip() for x in arg.split(',')]
             # trackers = [arg]
         elif opt in ("-s", "--sequence"):
-            loadSeqs = arg
-            if loadSeqs != 'All' and loadSeqs != 'all' and \
-                loadSeqs != 'tb50' and loadSeqs != 'tb100' and \
-                loadSeqs != 'cvpr13':
-                loadSeqs = [x.strip() for x in arg.split(',')]
+            loadSeqs = [x.strip() for x in arg.split(',')]
         elif opt in ("-e", "--evaltype"):
             evalTypes = [x.strip() for x in arg.split(',')]
             # evalTypes = [arg]
