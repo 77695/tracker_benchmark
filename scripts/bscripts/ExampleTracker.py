@@ -9,8 +9,8 @@ def run(seq, rp, bSaveImage):
     w = seq.init_rect[2]
     h = seq.init_rect[3]
 
-    command = map(str,['python run_tracker.py', seq.name, seq.path, seq.startFrame, seq.endFrame, 
-        seq.nz, seq.ext, x, y, w, h])
+    command = list(map(str,['python run_tracker.py', seq.name, seq.path, seq.startFrame, seq.endFrame, 
+        seq.nz, seq.ext, x, y, w, h]))
 
     tic = time.clock()
     os.system(' '.join(command))

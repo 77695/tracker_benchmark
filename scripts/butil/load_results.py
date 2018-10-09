@@ -65,7 +65,7 @@ def load_result(evalType, tracker):
                 string = attrFile.read()
                 j = json.loads(string)
                 attr = Attribute(**j)
-                attr.successRateList = map(lambda o:o*100, attr.successRateList)
+                attr.successRateList = list(map(lambda o:o*100, attr.successRateList))
                 attrs.append(attr)
                 attrs.sort()
         elif name.endswith('.json'):
@@ -110,7 +110,7 @@ def load_scores(evalType, tracker, testname):
         string = attrFile.read()
         j = json.loads(string)
         attr = Score(**j)
-        attr.successRateList = map(lambda o:o*100, attr.successRateList)
+        attr.successRateList = list(map(lambda o:o*100, attr.successRateList))
         attrs.append(attr)
         attrs.sort()
     return attrs

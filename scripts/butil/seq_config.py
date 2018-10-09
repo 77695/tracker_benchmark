@@ -147,11 +147,11 @@ def make_seq_configs(loadSeqs):
         gtRect = []
         for line in gtLines:
             if '\t' in line:
-                gtRect.append(map(int,line.strip().split('\t')))
+                gtRect.append(list(map(int,line.strip().split('\t'))))
             elif ',' in line:
-                gtRect.append(map(int,line.strip().split(',')))
+                gtRect.append(list(map(int,line.strip().split(','))))
             elif ' ' in line:
-                gtRect.append(map(int,line.strip().split(' ')))
+                gtRect.append(list(map(int,line.strip().split(' '))))
 
         init_rect = [0,0,0,0]
         seq = Sequence(name, path, startFrame, endFrame,

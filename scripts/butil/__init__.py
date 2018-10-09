@@ -10,10 +10,10 @@ from calc_seq_err_robust import *
 from calc_rect_center import *
 
 def d_to_f(x):
-    return map(lambda o:round(float(o),4), x)
+    return list(map(lambda o:round(float(o),4), x))
 
 def matlab_double_to_py_float(double):
-    return map(d_to_f, double)
+    return list(map(d_to_f, double))
 
 def ssd(x, y):
     if len(x) != len(y):
