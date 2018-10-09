@@ -1,4 +1,4 @@
-import urllib2
+import urllib
 import zipfile
 import shutil
 import copy
@@ -236,7 +236,7 @@ def download_sequence(seqName):
 def download_and_extract_file(url, dst, ext_dst):  
     print ('Connecting to {0} ...'.format(url))
     try:
-        u = urllib2.urlopen(url)
+        u = urllib.request.urlopen(url)
     except:
         print ('Cannot download {0} : {1}'.format(
             url.split('/')[-1], sys.exc_info()[1]))
