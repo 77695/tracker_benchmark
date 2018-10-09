@@ -16,14 +16,14 @@ def main(argv):
         opts, args = getopt.getopt(argv, "ht:e:s:",["tracker=","evaltype="
             ,"sequence="])
     except getopt.GetoptError:
-        print 'usage : run_trackers.py -t <trackers> -s <sequences>' \
-            + '-e <evaltypes>'
+        print ('usage : run_trackers.py -t <trackers> -s <sequences>' \
+            + '-e <evaltypes>')
         sys.exit(1)
 
     for opt, arg in opts:
         if opt == '-h':
-            print 'usage : run_trackers.py -t <trackers> -s <sequences>' \
-                + '-e <evaltypes>'
+            print ('usage : run_trackers.py -t <trackers> -s <sequences>' \
+                + '-e <evaltypes>')
             sys.exit(0)
         elif opt in ("-t", "--tracker"):
             trackers = [x.strip() for x in arg.split(',')]
@@ -35,11 +35,11 @@ def main(argv):
             # evalTypes = [arg]
 
     if SETUP_SEQ:
-        print 'Setup sequences ...'
+        print ('Setup sequences ...')
         butil.setup_seqs(loadSeqs)
     testname = '-'.join(trackers) + '-' + '-'.join(loadSeqs) + '-' + '-'.join(evalTypes)
-    print 'Starting benchmark for {0} trackers, evalTypes : {1}'.format(
-        len(trackers), evalTypes)
+    print ('Starting benchmark for {0} trackers, evalTypes : {1}'.format(
+        len(trackers), evalTypes))
     for evalType in evalTypes:
         seqNames = butil.get_seq_names(loadSeqs)
         seqs = butil.load_seq_configs(seqNames)
@@ -101,7 +101,7 @@ def run_trackers(trackers, seqs, evalType, shiftTypeSet):
         for idxTrk in range(len(trackers)):         
             t = trackers[idxTrk]
             if not os.path.exists(TRACKER_SRC + t):
-                print '{0} does not exists. Making dir ...'.format(t)
+                print ('{0} does not exists. Making dir ...'.format(t))
                 os.makedirs(TRACKER_SRC + t)
             if not OVERWRITE_RESULT:
                 trk_src = os.path.join(RESULT_SRC.format(evalType), t)
@@ -113,9 +113,9 @@ def run_trackers(trackers, seqs, evalType, shiftTypeSet):
             seqResults = []
             seqLen = len(subSeqs)
             for idx in range(seqLen):
-                print '{0}_{1}, {2}_{3}:{4}/{5} - {6}'.format(
+                print ('{0}_{1}, {2}_{3}:{4}/{5} - {6}'.format(
                     idxTrk + 1, t, idxSeq + 1, s.name, idx + 1, seqLen, \
-                    evalType)
+                    evalType))
                 rp = tmpRes_path + '_' + t + '_' + str(idx+1) + '/'
                 if SAVE_IMAGE and not os.path.exists(rp):
                     os.makedirs(rp)
@@ -127,8 +127,8 @@ def run_trackers(trackers, seqs, evalType, shiftTypeSet):
                 try:
                     res = eval(funcName)
                 except:
-                    print 'failed to execute {0} : {1}'.format(
-                        t, sys.exc_info())
+                    print ('failed to execute {0} : {1}'.format(
+                        t, sys.exc_info()))
                     os.chdir(WORKDIR)         
                     break
                 os.chdir(WORKDIR)
