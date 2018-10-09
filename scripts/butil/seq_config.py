@@ -59,7 +59,7 @@ def setup_seqs(loadSeqs):
 def save_seq_config(seq):
     string = json.dumps(seq.__dict__, indent=2)
     src = os.path.join(SEQ_SRC, seq.name)
-    configFile = open(src+'/cfg.json', 'wb')
+    configFile = open(src+'/cfg.json', 'w')
     configFile.write(string)
     configFile.close()
 
@@ -241,7 +241,7 @@ def download_and_extract_file(url, dst, ext_dst):
         print ('Cannot download {0} : {1}'.format(
             url.split('/')[-1], sys.exc_info()[1]))
         sys.exit(1)
-    f = open(dst, 'wb')
+    f = open(dst, 'w')
     meta = u.info()
     file_size = int(meta.getheaders("Content-Length")[0])
     print ("Downloading {0} ({1} Bytes)..".format(url.split('/')[-1], file_size))

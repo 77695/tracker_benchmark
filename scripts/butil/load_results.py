@@ -18,7 +18,7 @@ def save_seq_result(result):
         print (list(map(type, result[0].__dict__.values())))
         sys.exit()
     fileName = src + '/{0}.json'.format(seqName)
-    resultFile = open(fileName, 'wb')
+    resultFile = open(fileName, 'w')
     resultFile.write(string)
     resultFile.close()
 
@@ -35,7 +35,7 @@ def save_scores(scoreList, testname=None):
     for score in scoreList:
         string = json.dumps(score, default=lambda o : o.__dict__)
         fileName = scoreSrc + '/{0}.json'.format(score.name)
-        scoreFile = open(fileName, 'wb')
+        scoreFile = open(fileName, 'w')
         scoreFile.write(string)
         scoreFile.close()
 
