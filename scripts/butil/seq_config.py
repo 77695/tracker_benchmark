@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import urllib
 import zipfile
 import shutil
@@ -9,8 +11,6 @@ from PIL import Image
 from config import *
 from scripts import *
 import scripts.butil
-
-from __future__ import print_function
 
 def get_sub_seqs(s, numSeg, evalType):
     s.len = s.endFrame - s.startFrame + 1

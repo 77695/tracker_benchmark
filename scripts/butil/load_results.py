@@ -1,11 +1,11 @@
+from __future__ import print_function
+
 import os
 import sys
 import json
 
 from config import *
 from scripts import *
-
-from __future__ import print_function
 
 def save_seq_result(result):
     tracker = result[0].tracker
