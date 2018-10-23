@@ -5,6 +5,8 @@ import json
 from config import *
 from scripts import *
 
+from __future__ import print_function
+
 def save_seq_result(result):
     tracker = result[0].tracker
     seqName = result[0].seqName
